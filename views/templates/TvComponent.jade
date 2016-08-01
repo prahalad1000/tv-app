@@ -1,0 +1,29 @@
+.container
+  .jumbotron.text-center
+    h1 Todos&nbsp;
+      span.label.label-info {{tvs.length}}
+  .row
+    .col-sm-6.col-sm-offset-3
+      table.table.table-bordered
+        thead
+          tr
+            th.text-center Tvs
+            th.text-center Year
+        tbody
+          tr(*ngFor="var tv of tvs")
+            td
+              input(type='checkbox' on-click='deleteTv(tv._id)' bind-checked="false")
+              | &nbsp;&nbsp;
+              | {{tv.name}}
+            td
+              {{tv.year}}
+  .row
+    .col-sm-6.col-sm-offset-3
+      form(on-ngSubmit='createTv()')
+        .form-group.col-sm-6
+          input.form-control.input-lg.text-center(type='text' placeholder='What Tv you want to add?' bindon-ngModel='tvData.name' required)
+        .form-group.col-sm-6
+          input.form-control.input-lg.text-center(type='number' placeholder='Year of Tv release?' bindon-ngModel='tvData.year' required)
+        .form-group.text-center
+          br
+          button.btn.btn-success.btn-lg(type='submit') Do Something
